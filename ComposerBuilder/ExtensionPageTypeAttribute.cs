@@ -15,6 +15,5 @@
             get { return base.Name; }
             set { base.Name = "[ExtensionSys] " + value; }
         }
-
     }
 }

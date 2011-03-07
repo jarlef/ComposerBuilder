@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using ComposerBuilder.Helpers;
 using Dropit.Extension.Controllers;
+using Dropit.Extension.Core;
 using EPiServer.DataAbstraction;
 
 namespace ComposerBuilder.Synchronization
@@ -58,34 +59,27 @@ namespace ComposerBuilder.Synchronization
         public static void ConvertToExtensionPageType(int pageTypeID, bool updateSortOrder)
         {
             var pageType = PageType.Load(pageTypeID);
-
+            
             if (!PageTypeManager.IsExtensionPageType(pageType))
             {
-                //Cannot update areas cause this causes page requests + use http context that does not exist in this context
-                //foreach (ContentAreaData data in ContentAreaManager.GetAvailableContentAreas(pageType))
-                //{
-                //    PageTypeManager.AddContentAreaProperty(pageType, data.ID, data.Description);
-                //}
-                //AddExtensionPageProperty(pageType);
+                PageTypeHelper.AddExtensionPageProperty(pageType);
 
                 if (updateSortOrder)
                 {
-                    PageTypeCollection source = PageTypeManager.List();
+                    var source = PageTypeManager.List();
                     if ((source != null) && (source.Count > 0))
                     {
                         pageType.SortOrder = source.Last().SortOrder + 10;
                     }
                 }
+
                 pageType.IsAvailable = true;
                 pageType.Save();
 
                 //private methods for access and rules
-                //PageTypeManager.SetDefaultAccessPageType(pageType.ID);
-                //PageTypeManager.SetDefaultRulePageType(pageType.ID);
+                PageTypeHelper.SetDefaultAccessPageType(pageType.ID);
+                PageTypeHelper.SetDefaultRulePageType(pageType.ID);
             }
         }
-
- 
-
     }
 }

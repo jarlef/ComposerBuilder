@@ -30,7 +30,7 @@ namespace ComposerBuilder
 
         public AvailableOn AvailableOnPages { get; set; }
         public Type[] AvailableOnPageTypes { get; set; }
-        public AvailableOn AvailableOnContent { get; set; }       
+        public AvailableOn AvailableOnContent { get; set; }
         public Type[] AvailableOnContentTypes { get; set; }
     }
 }

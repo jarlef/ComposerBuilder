@@ -77,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvailableOn.cs" />
+    <Compile Include="ComposerAreaAttribute.cs" />
     <Compile Include="FunctionData.cs" />
     <Compile Include="FunctionTypeAttribute.cs" />
     <Compile Include="ExtensionPageData.cs" />

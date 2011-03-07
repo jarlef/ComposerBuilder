@@ -108,7 +108,6 @@ namespace ComposerBuilder.Synchronization
             }
 
             ManageAccessHandler.SaveAccessFunctionType(functionAccessControlList, null, functionTypeID);
-
         }
 
         private void UpdateContentAreas(PageType functionType)

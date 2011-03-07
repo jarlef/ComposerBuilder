@@ -35,11 +35,8 @@ namespace ComposerBuilder.Helpers
             Func<AssemblyName, bool> predicate = null;
             string attributeAssemblyName = attributeType.Assembly.GetName().Name;
             var list = new List<Type>();
-
-            //IEnumerable<Type> typesWithAttributeInAssembly = GetTypesWithAttributeInAssembly(attributeType.Assembly, attributeType);
-            //list.AddRange(typesWithAttributeInAssembly);
             
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
             {
                 if (predicate == null)
                 {
