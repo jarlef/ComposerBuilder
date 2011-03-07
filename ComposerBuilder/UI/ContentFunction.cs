@@ -11,7 +11,7 @@ namespace ComposerBuilder.UI
             where T : FunctionData
     {
         // Fields
-        private T _currentPage;
+        private T _currentFunction;
 
         // Methods
         protected ContentFunction()
@@ -19,20 +19,20 @@ namespace ComposerBuilder.UI
         }
 
         // Properties
-        public new T CurrentPage
+        public T CurrentFuction
         {
             get
             {
-                if (_currentPage == null)
+                if (_currentFunction == null)
                 {
                     PageData page = DataFactory.Instance.GetPage(ContentFunctionLink);
                     if (!page.InheritsFromType<T>())
                     {
                         throw new PageTypeBuilderException(string.Format(CultureInfo.InvariantCulture, "The function is not of type {0}.", new object[] { typeof(T).Name }));
                     }
-                    _currentPage = (T)page;
+                    _currentFunction = (T)page;
                 }
-                return _currentPage;
+                return _currentFunction;
             }
         }
     }
