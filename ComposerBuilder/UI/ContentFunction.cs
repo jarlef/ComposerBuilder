@@ -19,7 +19,7 @@ namespace ComposerBuilder.UI
         }
 
         // Properties
-        public T CurrentFuction
+        public T CurrentFunction
         {
             get
             {
